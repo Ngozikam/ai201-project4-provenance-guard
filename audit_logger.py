@@ -30,7 +30,11 @@ def create_log_entry(
         creator_id,
         attribution,
         confidence,
-        llm_score):
+        llm_score,
+        stylometric_score):
+    """
+    Create a structured audit log entry.
+    """
 
     return {
         "content_id": content_id,
@@ -39,5 +43,6 @@ def create_log_entry(
         "attribution": attribution,
         "confidence": confidence,
         "llm_score": llm_score,
+        "stylometric_score": stylometric_score,
         "status": "classified"
     }

@@ -9,6 +9,14 @@ from audit_logger import (
     get_log
 )
 
+from stylometric_analyzer import analyze_stylometry
+
+from confidence_scorer import (
+    calculate_confidence,
+    classify_confidence,
+    generate_label
+)
+
 app = Flask(__name__)
 
 
@@ -29,27 +37,46 @@ def submit():
 
     content_id = str(uuid.uuid4())
 
+    # First detection signal (Groq LLM)
     signal_result = classify_text(text)
 
-    confidence = 0.5
+    # Second detection signal (Stylometric Analysis)
+    stylometric_result = analyze_stylometry(text)
 
-    label = "We're not sure who wrote this."
+    # Combined confidence score
+    confidence = calculate_confidence(
+        signal_result["llm_score"],
+        stylometric_result["stylometric_score"]
+    )
 
+    # Final classification
+    classification = classify_confidence(confidence)
+
+    # Transparency label
+    label = generate_label(classification)
+
+    # Create audit log entry
     log_entry = create_log_entry(
         content_id=content_id,
         creator_id=creator_id,
-        attribution=signal_result["attribution"],
+        attribution=classification,
         confidence=confidence,
-        llm_score=signal_result["llm_score"]
+        llm_score=signal_result["llm_score"],
+        stylometric_score=stylometric_result["stylometric_score"]
     )
 
+    # Write audit log
     write_log(log_entry)
 
+    # Return API response
     return jsonify({
         "content_id": content_id,
-        "attribution": signal_result["attribution"],
+        "creator_id": creator_id,
+        "attribution": classification,
         "confidence": confidence,
-        "label": label
+        "label": label,
+        "llm_score": signal_result["llm_score"],
+        "stylometric_score": stylometric_result["stylometric_score"]
     })
 
 
