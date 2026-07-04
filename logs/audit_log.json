@@ -83,5 +83,122 @@
         "llm_score": 0.7,
         "stylometric_score": 0.55,
         "status": "classified"
+    },
+    {
+        "content_id": "cf55d916-9bf4-4502-a1cf-557c08a51e4b",
+        "creator_id": "appeal-test",
+        "timestamp": "2026-07-04T06:46:14.926940Z",
+        "attribution": "likely_human",
+        "confidence": 0.33,
+        "llm_score": 0.2,
+        "stylometric_score": 0.63,
+        "status": "classified"
+    },
+    {
+        "content_id": "cf55d916-9bf4-4502-a1cf-557c08a51e4b",
+        "timestamp": "2026-07-04T06:55:58.676041Z",
+        "status": "under_review",
+        "appeal_reasoning": "I wrote this content myself from personal experience.",
+        "event_type": "appeal"
+    },
+    {
+        "content_id": "d4e9166f-a67f-4850-a03e-a9d332cee410",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:28.701847Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "11d87da4-aaaf-49eb-9711-cd580eeaf9db",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:29.817055Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "4ca3f296-8b49-4c29-b16f-88f7d336eeff",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:30.509067Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "70eee7ca-b7b1-4eda-83f3-73d20dbecb34",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:31.350819Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "689f533c-8fec-48cf-8893-2e83aa441979",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:32.224371Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "941be848-69f1-4cd1-9a8c-860bf9402f80",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:33.178735Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "7c96a3f7-3047-4f0b-967d-503d0623f074",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:34.140252Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "e1f378b0-f4f4-44f8-8de3-5b6b3f6e9371",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:35.098275Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "aaed86b4-f02f-4dda-9006-1401c732837b",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:35.897018Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
+    },
+    {
+        "content_id": "fa408967-7950-4c1d-8f75-6c7ed84d5c75",
+        "creator_id": "ratelimit-test",
+        "timestamp": "2026-07-04T07:07:36.696546Z",
+        "attribution": "likely_human",
+        "confidence": 0.29,
+        "llm_score": 0.2,
+        "stylometric_score": 0.49,
+        "status": "classified"
     }
 ]

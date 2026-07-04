@@ -46,3 +46,17 @@ def create_log_entry(
         "stylometric_score": stylometric_score,
         "status": "classified"
     }
+
+
+def create_appeal_entry(content_id, creator_reasoning):
+    """
+    Create an audit log entry for an appeal.
+    """
+
+    return {
+        "content_id": content_id,
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "status": "under_review",
+        "appeal_reasoning": creator_reasoning,
+        "event_type": "appeal"
+    }
