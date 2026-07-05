@@ -8,7 +8,8 @@ A creator submits a piece of text, such as a poem, blog post, or short story exc
 
 The first detection signal is the Groq LLM classifier, which analyzes the semantic meaning and overall writing style of the submitted text. The second detection signal is a stylometric heuristic analyzer implemented in pure Python, which measures structural writing characteristics.
 
-The outputs from both detection signals are sent to the confidence scoring component. This component combines the information from both signals into a single confidence score. The confidence score is then passed to the transparency label generator, which produces the label displayed to the user.
+
+The outputs from both detection signals are combined by the confidence scoring component to produce a single weighted confidence score. The confidence score is then passed to the transparency label generator, which produces the label displayed to the user.
 
 The attribution result, confidence score, transparency label, and related information are recorded in the audit log. Finally, the Flask API returns the attribution result, confidence score, and transparency label to the creator.
 
@@ -104,7 +105,6 @@ The creator can submit an appeal explaining why the content should be reconsider
 
 ## 4. API Surface
 
-
 ### POST /submit
 
 **Purpose**
@@ -156,73 +156,21 @@ Retrieve the structured audit log.
 - Detection signals used
 - Appeal records (if any)
 
+### GET /
+
+**Purpose**
+
+Verify that the API is running.
+
+**Returns**
+
+- Welcome message
+
 ---
 
 ## 5. System Flow Diagram
 
-### Submission Flow
-
-```text
-Creator
-   │
-   │ Raw Text
-   ▼
-POST /submit
-   │
-   │ Validated Text
-   ▼
-Flask API
-   │
-   ├───────────────┐
-   │               │
-   ▼               ▼
-Groq LLM     Stylometric Heuristics
-(Semantic)      (Structural)
-   │               │
-   │ Signal Result │ Signal Result
-   └───────┬───────┘
-           │
-           ▼
-Confidence Scoring
-           │
-           │ Combined Confidence
-           ▼
-Transparency Label
-           │
-           │ Attribution Result
-           ▼
-Audit Log
-           │
-           │ Stored Decision
-           ▼
-API Response
-```
-
-### Appeal Flow
-
-```text
-Creator
-   │
-   │ Appeal Reason
-   ▼
-POST /appeal
-   │
-   │ Appeal Request
-   ▼
-Flask API
-   │
-   │ Status Update
-   ▼
-Under Review
-   │
-   │ Appeal Record
-   ▼
-Audit Log
-   │
-   │ Confirmation
-   ▼
-API Response
-```
+See the Architecture section 11 below for the complete Submission Flow and Appeal Flow diagrams.
 
 ---
 
@@ -286,7 +234,7 @@ Proposed weighting:
 
 Combined confidence score:
 
-Final Score = (0.70 × Groq Score) + (0.30 × Stylometric Score)
+Confidence Score = (0.70 × LLM Score) + (0.30 × Stylometric Score)
 
 This weighted approach gives greater importance to semantic analysis while still incorporating measurable structural characteristics.
 
@@ -448,8 +396,12 @@ Audit Log
            │ Stored Decision
            ▼
 API Response
+(Content ID, Attribution,
+Confidence Score,
+Transparency Label,
+LLM Score,
+Stylometric Score)
 ```
-
 ### Appeal Flow
 
 ```text
@@ -552,3 +504,5 @@ After implementation, I will test the system to ensure that:
 * All three transparency label variants are displayed correctly.
 * Submitting an appeal updates the content status to **under_review**.
 * Every attribution decision and appeal is recorded in the structured JSON audit log.
+
+All AI-generated code was reviewed, tested, and modified as needed before being integrated into the final implementation.
